@@ -10,6 +10,6 @@ public class HomeController {
 
     @GetMapping("/home")
     public String home(Model model) {
-        return "customer/Header"; // Trả về file Home.html
+        return "customer/Header";
     }
 }
