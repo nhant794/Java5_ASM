@@ -4,47 +4,94 @@
     <meta charset="UTF-8">
     <title>Header</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 
-
+    <style>
+        .navbar-custom {
+            background-color: #ff6f00 !important;
+        }
+        .nav-link {
+            color: black !important;
+        }
+        .search-bar {
+            width: 50%;
+        }
+        .category-menu {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .dropdown-menu {
+            min-width: 200px;
+            display: none;
+            position: absolute;
+            right: 0;
+            left: auto;
+        }
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .dropdown-toggle::after {
+            display: none !important;
+        }
+    </style>
 </head>
 <body>
 <div th:fragment="header">
-    <header class="container-fluid" style="backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-    background-image: url('/images/bg.jpg'); background-size: cover; background-position: center;">
-        <div class="container d-flex align-items-center">
-            <!-- Logo hoặc tiêu đề bên trái -->
-            <a class="navbar-brand text-primary fw-bold" href="#"><img th:src="@{/images/logo.jpg}" alt="Logo" class="img-fluid =" style="width: 100px"; height="100px"></a>
+    <header class="container-fluid p-3 navbar-custom">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg">
+                <!-- Logo -->
+                <a class="navbar-brand fw-bold" href="#">
+                    <img th:src="@{/images/logo.jpg}" alt="Logo" class="img-fluid" style="width: 100px; height: 100px;">
+                </a>
 
-            <!-- Nút toggle (dành cho màn hình nhỏ) -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <!-- Thanh tìm kiếm -->
+                <form class="d-flex search-bar mx-auto">
+                    <input class="form-control me-2" type="search" placeholder="Search products..." aria-label="Search">
+                    <button class="btn btn-dark" type="submit"><i class="fas fa-search"></i></button>
+                </form>
 
-            <!-- Danh sách liên kết bên phải -->
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark fw-bold" href="">HOME</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark fw-bold" href="">VIDEO</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark fw-bold" href="">USERS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark fw-bold" href="">REPORTS</a>
-                    </li>
-                </ul>
-            </div>
+                <div class="d-flex align-items-center">
+                    <a href="#" class="nav-link me-4"><i class="fa-solid fa-language " style="font-size: 25px;"></i></a>
+                    <a href="#" class="nav-link me-4"><i class="fa-solid fa-message " style="font-size: 25px;"></i></a>
+                    <a href="#" class="nav-link me-4"><i class="fas fa-shopping-cart " style="font-size: 25px;"></i></a>
 
-
-
+                    <!-- Dropdown User Menu -->
+                    <div class="dropdown">
+                        <a href="#" class="nav-link" id="userDropdown">
+                            <i class="fas fa-user" style="font-size: 25px;"></i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item fw-bold" href="#">Hi, Bot <span class="badge bg-info text-white">Seed</span></a></li>
+                            <li><a class="dropdown-item" href="#">My Alibaba</a></li>
+                            <li><a class="dropdown-item" href="#">Orders</a></li>
+                            <li><a class="dropdown-item" href="#">Messages</a></li>
+                            <li><a class="dropdown-item" href="#">RFQs</a></li>
+                            <li><a class="dropdown-item" href="#">Favorites</a></li>
+                            <li><a class="dropdown-item" href="#">Account</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="#">Sign out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </div>
     </header>
+
+    <!-- Thanh danh mục -->
+    <div class="container mt-2">
+        <div class="category-menu">
+            <a href="#" class="text-dark fw-bold me-3">Categories</a>
+            <a href="#" class="text-secondary me-3">Electronics</a>
+            <a href="#" class="text-secondary me-3">Clothing</a>
+            <a href="#" class="text-secondary me-3">Watches</a>
+            <a href="#" class="text-secondary">More...</a>
+        </div>
+    </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

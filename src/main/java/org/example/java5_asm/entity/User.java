@@ -19,10 +19,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String username;
+    private String fullname;
+    private String phone;
     private String email;
     private String password;
-    private String role;
+    private Boolean role = false;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
