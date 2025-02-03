@@ -17,17 +17,6 @@
             object-fit: cover;  /* Giữ tỷ lệ ảnh, cắt bớt nếu cần */
         }
 
-        .icon_flower {
-            float: left;
-            clear: both;
-            width: 100%;
-            background: #F7F7F7;
-            -webkit-box-shadow: 0 2px 5px #0000001a;
-            -moz-box-shadow: 0 2px 5px #0000001a;
-            box-shadow: 0 2px 5px #0000001a;
-            margin-top: 15px;
-        }
-
         .icon_flower h2 {
             color: #bd2026;
             font-size: 18px;
@@ -85,6 +74,9 @@
         .icon_flower ul.items li:hover a {
             color: #bd2026;
         }
+
+
+
     </style>
 </head>
 <body>
@@ -146,52 +138,25 @@
         </div>
     </div>
 
-    <div class="container-fluid mt-5">
-        <div class="icon_flower">
-            <div class="wrapper">
-                <h2><span title="Mẫu hoa mới năm 2025">Mẫu hoa mới năm 2025</span></h2>
-                <ul class="items">
-                    <li>
-                        <a href="/dien-hoa/hoa-tinh-yeu.aspx" title="Hoa tình yêu"><img th:src="@{/images/Carousel_3.webp}"></a>
-                        <a href="/dien-hoa/hoa-tinh-yeu.aspx" title="Hoa tình yêu">Hoa tình yêu</a></li>
-                    <li>
-                        <a href="/dien-hoa/hoa-sinh-nhat.aspx" title="Hoa sinh nhật"><img th:src="@{/images/Carousel_3.webp}"></a>
-                        <a href="/dien-hoa/hoa-sinh-nhat.aspx" title="Hoa sinh nhật">Hoa sinh nhật</a></li>
-                    <li>
-                        <a href="/cua-hang-hoa/mau-hoa-moi.aspx" title="Mẫu hoa mới"><img th:src="@{/images/Carousel_3.webp}"></a>
-                        <a href="/cua-hang-hoa/mau-hoa-moi.aspx" title="Mẫu hoa mới">Mẫu hoa mới</a></li>
-                    <li>
-                        <a href="/cay-canh/cay-van-phong.aspx" title="Cây văn phòng"><img th:src="@{/images/Carousel_3.webp}"></a>
-                        <a href="/cay-canh/cay-van-phong.aspx" title="Cây văn phòng">Cây văn phòng</a></li>
-                    <li>
-                        <a href="/shop-hoa/hoa-chuc-mung.aspx" title="Hoa chúc mừng"><img th:src="@{/images/Carousel_3.webp}"></a>
-                        <a href="/shop-hoa/hoa-chuc-mung.aspx" title="Hoa chúc mừng">Hoa chúc mừng</a></li>
-                    <li>
-                        <a href="/shop-hoa/hoa-chia-buon.aspx" title="Hoa chia buồn"><img th:src="@{/images/Carousel_3.webp}"></a>
-                        <a href="/shop-hoa/hoa-chia-buon.aspx" title="Lẵng hoa chia buồn">Lẵng hoa chia buồn</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
 
-    <div class="container bg-dark p-4 rounded shadow">
+    <div class="container mt-4 bg-white p-4 rounded shadow">
         <h3 class="title text-center text-info">KHUYẾN MÃI</h3>
-        <div class="row row-cols-3 row-cols-md-5 g-4 mt-4">
+        <div class="row row-cols-3 row-cols-md-5">
             <!-- Card 1 -->
             <div class="col">
-                <div class="card h-80 text-center">
-<!--                    <div class="position-absolute top-0 start-0 bg-purple text-white px-2 py-1" th:if="${product.onSale}">SALE</div>-->
-<!--                    <div class="position-absolute top-0 end-0 bg-danger text-white px-2 py-1" th:if="${product.isNew}">NEW</div>-->
-                    <img th:src="@{/images/15234_victo-rose.jpg}" class="card-img-top" alt="Product Image">
+                <div class="card text-center">
+<!--                    <div class="position-absolute "><img th:src="@{/images/new.png}" style="width: 50px"></div>-->
+                    <div class="position-absolute top-1 start-0 bg-danger text-white px-2 py-1 mt-2">NEW</div>
+                    <div class="position-absolute top-0 end-0 text-white"><img th:src="@{/images/sale-tag.png}" style="width: 50px"></div>
+                    <a href="#"><img th:src="@{/images/15234_victo-rose.jpg}" class="card-img-top" style="width: 150px; height: auto; margin: auto;" alt="Product Image"></a>
                     <hr>
-                    <div class="card-body">
-                        <h6 class="card-title">Hoa 1</h6>
+                        <h5 class="card-title">Hoa 1</h5>
                         <p class="card-text">
                             <span class="text-danger fw-bold" >200000</span>
                             <span class="text-muted text-decoration-line-through">100000</span>
                         </p>
-                        <a href="#" class="btn btn-primary">Đặt hàng</a>
-                    </div>
+                    <button type="submit" class="btn btn-primary w-50">ĐẶT HÀNG</button>
+
                 </div>
             </div>
         </div>
@@ -199,7 +164,10 @@
             <button class="btn btn-primary">Xem thêm</button>
         </div>
     </div>
+
 </main>
+
+
 
 
 <!-- Bootstrap JS -->
