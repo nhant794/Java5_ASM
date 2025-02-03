@@ -173,6 +173,32 @@
             </div>
         </div>
     </div>
+
+    <div class="container bg-dark p-4 rounded shadow">
+        <h3 class="title text-center text-info">KHUYẾN MÃI</h3>
+        <div class="row row-cols-3 row-cols-md-5 g-4 mt-4">
+            <!-- Card 1 -->
+            <div class="col">
+                <div class="card h-80 text-center">
+<!--                    <div class="position-absolute top-0 start-0 bg-purple text-white px-2 py-1" th:if="${product.onSale}">SALE</div>-->
+<!--                    <div class="position-absolute top-0 end-0 bg-danger text-white px-2 py-1" th:if="${product.isNew}">NEW</div>-->
+                    <img th:src="@{/images/15234_victo-rose.jpg}" class="card-img-top" alt="Product Image">
+                    <hr>
+                    <div class="card-body">
+                        <h6 class="card-title">Hoa 1</h6>
+                        <p class="card-text">
+                            <span class="text-danger fw-bold" >200000</span>
+                            <span class="text-muted text-decoration-line-through">100000</span>
+                        </p>
+                        <a href="#" class="btn btn-primary">Đặt hàng</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <button class="btn btn-primary">Xem thêm</button>
+        </div>
+    </div>
 </main>
 
 

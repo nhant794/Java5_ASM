@@ -18,6 +18,8 @@ public class Product {
     private String description;
     private Double price;
 
+    private String imageUrl;
+
     @Column(nullable = false)
     private Integer stock; // Số lượng tồn kho
 

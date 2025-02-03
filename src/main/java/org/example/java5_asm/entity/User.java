@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.management.relation.Role;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class User {
     private String phone;
     private String email;
     private String password;
-    private Boolean role = false;
+    private Role role;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -35,5 +36,8 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Evaluate> reviews;
 
+    public enum Role {
+        ADMIN, CUSTOMER
+    }
     // Getters and Setters
 }
