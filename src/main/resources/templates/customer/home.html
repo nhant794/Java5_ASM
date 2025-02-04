@@ -145,20 +145,25 @@
             <!-- Card 1 -->
             <div class="col">
                 <div class="card text-center">
-                    <!--                    <div class="position-absolute "><img th:src="@{/images/new.png}" style="width: 50px"></div>-->
                     <div class="position-absolute top-1 start-0 bg-danger text-white px-2 py-1 mt-2">NEW</div>
-                    <div class="position-absolute top-0 end-0 text-white"><img th:src="@{/images/sale-tag.png}" style="width: 50px"></div>
-                    <a href="#"><img th:src="@{/images/15234_victo-rose.jpg}" class="card-img-top" style="width: 150px; height: auto; margin: auto;" alt="Product Image"></a>
+                    <div class="position-absolute top-0 end-0 text-white">
+                        <img th:src="@{/images/sale-tag.png}" style="width: 50px">
+                    </div>
+                    <a th:href="@{/detail}">
+                        <img th:src="@{/images/15234_victo-rose.jpg}" class="card-img-top" style="width: 150px; height: auto; margin: auto;" alt="Product Image">
+                    </a>
                     <hr>
                     <h5 class="card-title">Hoa 1</h5>
                     <p class="card-text">
-                        <span class="text-danger fw-bold" >200000</span>
+                        <span class="text-danger fw-bold">200000</span>
                         <span class="text-muted text-decoration-line-through">100000</span>
                     </p>
-                    <button type="submit" class="btn btn-primary w-50">ĐẶT HÀNG</button>
-
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary mb-2">ĐẶT HÀNG</button>
+                    </div>
                 </div>
             </div>
+
         </div>
         <div class="text-center mt-4">
             <button class="btn btn-primary">Xem thêm</button>

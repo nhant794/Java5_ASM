@@ -17,8 +17,7 @@ public class HomeController {
 
     @GetMapping({"/", "/home"})
     public String home(Model model) {
-        List<Category> categories = categoryService.getParentCategories();
-        model.addAttribute("categories", categories);
+
         return "customer/home";
     }
 }
