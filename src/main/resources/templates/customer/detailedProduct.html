@@ -1,10 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Detail Product</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 </head>
 <body>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <img th:src="@{/images/hoa_ty.jpg}" class="img-fluid rounded">
+            <a href="#">Xem ảnh thực tế</a>
+        </div>
+        <div class="col-md-8">
+            <h2 class="text-danger">Hội Ngộ</h2>
+            <hr>
+            <p class="text-danger fs-4">
+                <del class="text-muted">440,000VND</del> 390,000VND <span class="badge bg-danger">12% GIẢM</span>
+            </p>
+            <hr>
+            <div>
+                <p>Mô tả chi tiết</p>
+                <p><strong>Sản Phẩm Bao Gồm:</strong></p>
+                <ul>
+                    <li>Hoa Sao Tím: 1</li>
+                    <li>Lá Phụ Khác: 1</li>
+                    <li>Purple Ohara : 18</li>
+                </ul>
+                <em>Sản phẩm thực nhận có thể khác với hình đại diện trên website (đặc điểm thủ công và tính chất tự nhiên của hàng nông nghiệp)</em>
+            </div>
+            <p><strong>Khuyến mãi:</strong> Giảm 50K | Giảm 25K | Giảm 10%</p>
+            <p class="text-warning">⚠ Sản phẩm này không hỗ trợ giao vào các ngày 13-02-2025, 14-02-2025, 15-02-2025</p>
 
+            <div class="d-flex align-items-center mb-3">
+                <label class="me-2">Số lượng:</label>
+                <input type="number" value="1" min="1" class="form-control w-25">
+            </div>
+
+            <button class="btn btn-warning me-2">ĐẶT HÀNG</button>
+            <button class="btn btn-danger">ĐẶT NHANH</button>
+
+            <p class="mt-3 text-primary">🚚 Giao hoa NHANH trong 60 phút</p>
+            <p class="text-success">🎁 Tặng miễn phí thiệp hoặc banner</p>
+        </div>
+    </div>
+
+    <div class="mt-4">
+
+    </div>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
