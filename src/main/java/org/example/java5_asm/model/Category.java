@@ -4,6 +4,7 @@ package org.example.java5_asm.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -23,8 +24,10 @@ public class Category {
     @JoinColumn(name = "parent_id")
     private Category parent;
 
-    @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Category> subCategories;
 
+    @ManyToMany(mappedBy = "categories")
+    private List<Product> products;
 
 }
