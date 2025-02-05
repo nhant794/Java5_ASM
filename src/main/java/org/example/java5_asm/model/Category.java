@@ -1,7 +1,6 @@
-package org.example.java5_asm.entity;
+package org.example.java5_asm.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 import lombok.*;
 

@@ -1,8 +1,8 @@
 package org.example.java5_asm.service;
 
 
-import org.example.java5_asm.entity.District;
-import org.example.java5_asm.entity.Province;
+import org.example.java5_asm.model.District;
+import org.example.java5_asm.model.Province;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;

@@ -1,9 +1,12 @@
-package org.example.java5_asm.entity;
+package org.example.java5_asm.model;
 
-public class District {
+import java.util.List;
+
+public class Province {
 
     private int code;
     private String name;
+    private List<District> districts;
 
     // Getter & Setter
     public int getCode() {
@@ -20,5 +23,13 @@ public class District {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<District> getDistricts() {
+        return districts;
+    }
+
+    public void setDistricts(List<District> districts) {
+        this.districts = districts;
     }
 }

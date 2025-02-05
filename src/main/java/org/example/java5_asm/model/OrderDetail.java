@@ -1,24 +1,24 @@
-package org.example.java5_asm.entity;
+package org.example.java5_asm.model;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "reviews")
-public class Evaluate {
+@Table(name = "order_details")
+public class OrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "order_id")
+    private Order order;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
 
-    private Integer rating;
-    private String comment;
+    private Integer quantity;
+    private Double price;
 
     // Getters and Setters
 }

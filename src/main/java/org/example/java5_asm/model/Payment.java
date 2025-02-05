@@ -1,4 +1,4 @@
-package org.example.java5_asm.entity;
+package org.example.java5_asm.model;
 
 import jakarta.persistence.*;
 

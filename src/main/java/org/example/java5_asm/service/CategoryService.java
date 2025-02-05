@@ -1,7 +1,7 @@
 package org.example.java5_asm.service;
 
 import jakarta.transaction.Transactional;
-import org.example.java5_asm.entity.Category;
+import org.example.java5_asm.model.Category;
 import org.example.java5_asm.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 

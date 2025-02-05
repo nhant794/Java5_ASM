@@ -1,10 +1,16 @@
-package org.example.java5_asm.entity;
+package org.example.java5_asm.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "products")
 public class Product {
@@ -16,6 +22,7 @@ public class Product {
 
     @Column(columnDefinition = "TEXT")
     private String description;
+
     private Double price;
 
     private String imageUrl;
