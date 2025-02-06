@@ -4,14 +4,117 @@
       layout:decorate="~{admin/layout}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Quản lý sản phẩm</title>
 </head>
 <body>
 <main layout:fragment="content">
+    <div class="container my-4">
+        <div class="row g-3">
+            <!-- FORM THÊM / SỬA SẢN PHẨM -->
+            <div class="col-md-4">
+                <div class="p-3 border rounded bg-light">
+                    <h5>Thêm / Sửa sản phẩm</h5>
+                    <form action="#" th:action="@{/admin/product/save}" th:method="post" th:object="${product}">
+                        <input type="hidden" th:field="*{id}">
+
+                        <div class="mb-3">
+                            <label class="form-label">Tên sản phẩm</label>
+                            <input type="text" class="form-control" th:field="*{name}" placeholder="Nhập tên sản phẩm">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Giá</label>
+                            <input type="number" class="form-control" th:field="*{price}" placeholder="Nhập giá sản phẩm">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Tồn kho</label>
+                            <input type="number" class="form-control" th:field="*{stock}" placeholder="Nhập số lượng tồn">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Mô tả</label>
+                            <textarea class="form-control" th:field="*{description}" placeholder="Nhập mô tả sản phẩm"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Hình ảnh (URL)</label>
+                            <input type="text" class="form-control" th:field="*{imageUrl}" placeholder="Nhập URL hình ảnh">
+                        </div>
+
+                        <!-- CHỌN DANH MỤC CHA -->
+                        <div class="mb-3">
+                            <label class="form-label">Danh mục cha</label>
+                            <select name="parentId" class="form-select"
+                                    onchange="window.location.href='/admin/product?parentId=' + this.value">
+                                <option value="">Chọn danh mục cha</option>
+                                <option th:each="cat : ${categories}"
+                                        th:value="${cat.id}"
+                                        th:text="${cat.name}"
+                                        th:selected="${cat.id == selectedParentId}"></option>
+                            </select>
+                        </div>
 
 
+                        <!-- CHỌN DANH MỤC CON -->
+                        <div class="mb-3">
+                            <label class="form-label">Danh mục con</label>
+                            <select name="categoryId" class="form-select">
+                                <option value="">Chọn danh mục con</option>
+                                <option th:each="subCat : ${subCategories}"
+                                        th:value="${subCat.id}"
+                                        th:text="${subCat.name}"
+                                        th:selected="${subCat.id == selectedCategoryId}"></option>
+                            </select>
+                        </div>
 
 
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-success me-2">Lưu sản phẩm</button>
+                            <button type="reset" class="btn btn-warning">Làm mới</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- DANH SÁCH SẢN PHẨM -->
+            <div class="col-md-8">
+                <div class="p-3 border rounded bg-light">
+                    <h5>Danh sách sản phẩm</h5>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead class="table-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Giá</th>
+                                <th>Tồn kho</th>
+                                <th>Hình ảnh</th>
+                                <th>Hành động</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="p : ${products}">
+                                <td th:text="${p.id}"></td>
+                                <td th:text="${p.name}"></td>
+                                <td th:text="${p.price}"></td>
+                                <td th:text="${p.stock}"></td>
+                                <td>
+                                    <img th:src="${p.imageUrl}" alt="Ảnh sản phẩm" width="50">
+                                </td>
+                                <td class="d-flex">
+                                    <a th:href="@{/admin/product/edit/{id}(id=${p.id})}" class="btn btn-sm btn-primary me-2">Sửa</a>
+                                    <a th:href="@{/admin/product/delete/{id}(id=${p.id})}" class="btn btn-sm btn-danger"
+                                       onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')">Xóa</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
 </body>
 </html>

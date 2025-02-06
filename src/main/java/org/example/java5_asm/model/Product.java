@@ -1,6 +1,7 @@
 package org.example.java5_asm.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,8 +28,9 @@ public class Product {
 
     private String imageUrl;
 
+    @NotNull
     @Column(nullable = false)
-    private Integer stock; // Số lượng tồn kho
+    private Integer stock = 0; // Giá trị mặc định là 0 nếu không nhập
 
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;

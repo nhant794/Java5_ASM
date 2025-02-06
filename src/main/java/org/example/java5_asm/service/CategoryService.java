@@ -14,7 +14,6 @@ import java.util.Set;
 @Service
 @Transactional
 public class CategoryService {
-    @Autowired
     private final CategoryRepository categoryRepository;
 
     public CategoryService(CategoryRepository categoryRepository) {
@@ -56,9 +55,8 @@ public class CategoryService {
     }
 
     // Lấy danh sách danh mục con của danh mục cha
-    public Set<Category> getSubCategories(Long parentId) {
-        Optional<Category> parentCategory = categoryRepository.findById(parentId);
-        return parentCategory.map(Category::getSubCategories).orElse(new HashSet<>());
+    public List<Category> getSubCategories(Long parentId) {
+        return categoryRepository.findByParentId(parentId);
     }
 
 
