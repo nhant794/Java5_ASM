@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.List;
 
 @Data
@@ -18,11 +19,22 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String username;
     private String fullname;
     private String phone;
     private String email;
     private String password;
-    private Role role;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Collection<Role> roles;
+
+
+
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -33,8 +45,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Evaluate> reviews;
 
-    public enum Role {
-        ADMIN, CUSTOMER
-    }
+
+
     // Getters and Setters
 }

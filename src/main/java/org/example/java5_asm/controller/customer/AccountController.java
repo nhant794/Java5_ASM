@@ -18,7 +18,7 @@ public class AccountController {
     @Autowired
     private LocationService locationService;
 
-    @GetMapping("/account")
+    @GetMapping("/profile")
     public String getAccountPage(Model model) {
         // Lấy danh sách tỉnh thành
         List<Province> provinces = locationService.getProvinces();

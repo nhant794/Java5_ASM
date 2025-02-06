@@ -1,4 +1,7 @@
 package org.example.java5_asm.repository;
 
-public interface PaymentRepository {
+import org.example.java5_asm.model.Payment;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PaymentRepository extends JpaRepository<Payment, Long> {
 }

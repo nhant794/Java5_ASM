@@ -1,10 +1,17 @@
 package org.example.java5_asm.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "orders")
 public class Order {
@@ -29,6 +36,9 @@ public class Order {
 
     @OneToOne(mappedBy = "order")
     private Payment payment;
+
+
+
 
     // Getters and Setters
 }

@@ -5,25 +5,28 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "payments")
-public class Payment {
+@Table(name = "cart_item")
+public class CartItem {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "order_id")
-    private Order order;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
-    @Column(name = "payment_method")
-    private String paymentMethod;
+    @ManyToOne
+    @JoinColumn(name = "product_id", nullable = false)
+    private Product product;
 
-    private String status;
+    private Integer quantity = 1;
 
-    // Getters and Setters
+
+
+
 }

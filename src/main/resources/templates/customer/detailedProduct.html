@@ -15,18 +15,20 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-4">
-                <img th:src="@{/images/hoa_ty.jpg}" class="img-fluid rounded">
+                <img th:src="@{'/images/'+ ${productDetail.imageUrl}}" class="img-fluid rounded" style="width: 400px; height: auto;">
                 <a href="#">Xem ảnh thực tế</a>
             </div>
             <div class="col-md-8">
-                <h2 class="text-danger">Hội Ngộ</h2>
+                <h2 class="text-danger" th:text="${productDetail.name}"></h2>
                 <hr>
                 <p class="text-danger fs-4">
-                    <del class="text-muted">440,000VND</del> 390,000VND <span class="badge bg-danger">12% GIẢM</span>
+                    <del class="text-muted">440,000VND</del> 390,000VND <span class="badge bg-danger" th:if="${productDetail.discount > 0}"
+                                                                              th:text="${productDetail.getFormattedDiscount()}"></span>
+
                 </p>
                 <hr>
                 <div>
-                    <p>Mô tả chi tiết</p>
+                    <p th:text="${productDetail.description}"></p>
                     <p><strong>Sản Phẩm Bao Gồm:</strong></p>
                     <ul>
                         <li>Hoa Sao Tím: 1</li>
@@ -51,9 +53,37 @@
             </div>
         </div>
 
-        <div class="mt-4">
+<!--        <div class="container mt-4 bg-white p-4 rounded shadow">-->
+<!--            <h3 class="title text-info">SẢN PHẨM CÙNG LOẠI<h3>-->
+<!--            <div class="row row-cols-3 row-cols-md-5">-->
+<!--                &lt;!&ndash; Card 1 &ndash;&gt;-->
+<!--                <div class="col" th:each="p : ${discountedProducts}">-->
+<!--                    <div class="card text-center">-->
+<!--                        <div class="position-absolute top-1 start-0 bg-danger text-white px-2 py-1 mt-2">NEW</div>-->
+<!--                        <div class="position-absolute top-0 end-0 text-white">-->
+<!--                            <img th:src="@{/images/sale-tag.png}" style="width: 50px">-->
+<!--                        </div>-->
+<!--                        <a th:href="@{/detail}">-->
+<!--                            <img th:src="@{'/images/'+ ${p.imageUrl}}" class="card-img-top" style="width: 150px; height: auto; margin: auto;" alt="Product Image">-->
+<!--                        </a>-->
+<!--                        <hr>-->
+<!--                        <h5 class="card-title" th:text="${p.name}"></h5>-->
+<!--                        <p class="card-text">-->
+<!--                            <span class="text-danger fw-bold" th:text="${#numbers.formatDecimal(p.discountedPrice, 0, 'COMMA', 0, 'POINT')}"></span>-->
+<!--                            <span class="text-muted text-decoration-line-through" th:text="${#numbers.formatDecimal(p.price, 0, 'COMMA', 0, 'POINT')}"></span>-->
+<!--                        </p>-->
+<!--                        <div class="d-flex justify-content-center">-->
+<!--                            <button type="submit" class="btn btn-primary mb-2">ĐẶT HÀNG</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
 
-        </div>
+<!--            </div>-->
+<!--            <div class="text-center mt-4">-->
+<!--                <button class="btn btn-primary">Xem thêm</button>-->
+<!--            </div>-->
+<!--        </div>-->
+
     </div>
 </main>
 

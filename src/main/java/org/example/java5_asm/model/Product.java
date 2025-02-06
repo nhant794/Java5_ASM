@@ -75,5 +75,16 @@ public class Product {
         return price;
     }
 
+    public String getFormattedDiscount() {
+        if (discount != null && discount > 0) {
+            // Kiểm tra nếu discount là số nguyên, loại bỏ phần thập phân nếu cần
+            return String.format("%.0f%% GIẢM", discount);
+        }
+        return "";
+    }
+
+
+
+
     // Getters and Setters
 }
