@@ -30,23 +30,17 @@ public class ProductAdminController {
     }
 
     @GetMapping
-    public String showProductForm(@RequestParam(name = "parentId", required = false) Long parentId,
-                                  Model model) {
-        List<Category> categories = categoryService.getParentCategories();
-        List<Category> subCategories = new ArrayList<>();
-
-        if (parentId != null) {
-            subCategories = categoryService.getSubCategories(parentId);
-            model.addAttribute("selectedParentId", parentId);
-        }
+    public String showProductForm(Model model) {
+        List<Category> categories = categoryService.getParentCategories(); // Đã có danh mục con trong danh mục cha
 
         model.addAttribute("categories", categories);
         model.addAttribute("products", productService.getAllProducts());
-        model.addAttribute("subCategories", subCategories);
         model.addAttribute("product", new Product());
+        System.out.println("anhewqffffffffffffffff: " + productService.getAllProducts());
 
         return "admin/product";
     }
+
 
 
 

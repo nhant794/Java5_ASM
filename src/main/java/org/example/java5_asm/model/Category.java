@@ -4,6 +4,7 @@ package org.example.java5_asm.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -25,7 +26,7 @@ public class Category {
     private Category parent;
 
     @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Category> subCategories;
+    private Set<Category> subCategories = new HashSet<>();;
 
     @ManyToMany(mappedBy = "categories")
     private List<Product> products;
