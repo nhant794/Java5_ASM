@@ -16,13 +16,17 @@ public class CategoryAdminController {
     @Autowired
     private CategoryService categoryService;
 
-    // Hiển thị danh sách danh mục, bao gồm danh mục con
     @GetMapping
-    public String listCategories(Model model) {
-        List<Category> categories = categoryService.getParentCategories();
-        model.addAttribute("categories", categories);
-        model.addAttribute("category", new Category()); // Thêm dòng này
-        model.addAttribute("parentCategories", categoryService.getParentCategories()); // Đảm bảo luôn có dữ liệu
+    public String listCategories(@RequestParam(value = "parentId", required = false) Long parentId, Model model) {
+        List<Category> parentCategories = categoryService.getParentCategories();
+        List<Category> subCategories = (parentId != null) ? categoryService.getSubCategories(parentId) : List.of();
+
+        Category parentCategory = (parentId != null) ? categoryService.findById(parentId).orElse(null) : null;
+
+        model.addAttribute("categories", parentCategories);
+        model.addAttribute("subCategories", subCategories);
+        model.addAttribute("category", new Category());
+        model.addAttribute("parentCategory", parentCategory); // Truyền thông tin danh mục cha
         return "admin/category";
     }
 
@@ -36,10 +40,16 @@ public class CategoryAdminController {
 
     // Xử lý thêm mới danh mục
     @PostMapping("/save")
-    public String saveCategory(@ModelAttribute("category") Category category) {
+    public String saveCategory(@ModelAttribute("category") Category category,
+                               @RequestParam(value = "parentId", required = false) Long parentId) {
+        if (parentId != null) {
+            Optional<Category> parentCategory = categoryService.findById(parentId);
+            parentCategory.ifPresent(category::setParent); // Gán danh mục cha
+        }
         categoryService.save(category);
         return "redirect:/admin/category";
     }
+
 
     // Hiển thị form cập nhật danh mục
     @GetMapping("/edit/{id}")
@@ -47,16 +57,20 @@ public class CategoryAdminController {
         Optional<Category> category = categoryService.findById(id);
         if (category.isPresent()) {
             model.addAttribute("category", category.get());
-            model.addAttribute("parentCategories", categoryService.getParentCategories());
+            model.addAttribute("categories", categoryService.getParentCategories());
+            model.addAttribute("subCategories", categoryService.getSubCategories(category.get().getParent() != null ? category.get().getParent().getId() : null));
+            model.addAttribute("parentCategory", category.get().getParent());
             return "admin/category";
         }
         return "redirect:/admin/category";
     }
 
-    // Xử lý xóa danh mục
+
     @GetMapping("/delete/{id}")
-    public String deleteCategory(@PathVariable Long id) {
-        categoryService.deleteById(id);
+    public String delete(@PathVariable("id") Long id) {
+        System.out.println("ìaasfasfa: " +id);
+        categoryService.delete(id);
         return "redirect:/admin/category";
     }
+
 }

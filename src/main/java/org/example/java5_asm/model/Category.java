@@ -25,7 +25,7 @@ public class Category {
     @JoinColumn(name = "parent_id")
     private Category parent;
 
-    @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
     private Set<Category> subCategories = new HashSet<>();;
 
     @ManyToMany(mappedBy = "categories")

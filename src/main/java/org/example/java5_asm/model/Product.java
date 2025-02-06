@@ -26,6 +26,10 @@ public class Product {
 
     private Double price;
 
+    private Double discount = 0.0; // Giá trị mặc định là 0 nếu không có khuyến mãi
+
+
+
     private String imageUrl;
 
     @NotNull
@@ -62,6 +66,14 @@ public class Product {
 
     @OneToMany(mappedBy = "product")
     private List<Evaluate> reviews;
+
+
+    public Double getDiscountedPrice() {
+        if (discount != null && discount > 0) {
+            return price - (price * discount / 100);
+        }
+        return price;
+    }
 
     // Getters and Setters
 }

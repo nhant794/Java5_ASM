@@ -30,9 +30,11 @@ public class CategoryService {
         return categoryRepository.findById(id);
     }
 
-    public void deleteById(Long id) {
+    public void delete(Long id) {
         categoryRepository.deleteById(id);
     }
+
+
 
     // Lấy danh sách danh mục cha
     public List<Category> getParentCategories() {
