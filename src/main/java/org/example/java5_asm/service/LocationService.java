@@ -14,6 +14,7 @@ public class LocationService {
 
     private static final String PROVINCE_API_URL = "https://provinces.open-api.vn/api/p/";
     private static final String DISTRICT_API_URL = "https://provinces.open-api.vn/api/p/{provinceId}?depth=2";
+    private static final String WARD_API_URL = "https://provinces.open-api.vn/api/d/{districtId}?depth=2";
 
     @Autowired
     private RestTemplate restTemplate;
@@ -34,4 +35,8 @@ public class LocationService {
         }
         return List.of();
     }
+
+
+
+
 }

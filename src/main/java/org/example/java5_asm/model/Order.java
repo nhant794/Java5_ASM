@@ -1,13 +1,10 @@
 package org.example.java5_asm.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
 
 @Data
 @AllArgsConstructor
@@ -20,25 +17,41 @@ public class Order {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    @Column(name = "receiver_name", nullable = false)
+    private String receiverName;
+
+    @Column(name = "receiver_phone", nullable = false)
+    private String receiverPhone;
+
+    @Column(name = "address", nullable = false)
+    private String address;
+
+    @Column(name = "note")
+    private String note;
 
     @Column(name = "total_price")
     private Double totalPrice;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", nullable = false)
+    private OrderStatus status = OrderStatus.PENDING;  // Mặc định là chờ xác nhận
 
     @Column(name = "created_at")
-    private LocalDateTime createdAt;
+    private LocalDateTime createdAt = LocalDateTime.now();
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderDetail> orderDetails;
 
-    @OneToOne(mappedBy = "order")
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
     private Payment payment;
 
-
-
-
-    // Getters and Setters
+    // Tính tổng giá đơn hàng từ OrderDetail
+    public void calculateTotalPrice() {
+        this.totalPrice = orderDetails.stream()
+                .mapToDouble(detail -> detail.getPrice() * detail.getQuantity())
+                .sum();
+    }
 }

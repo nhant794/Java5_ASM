@@ -7,13 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Giỏ Hàng</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"></link>
-
 </head>
 <body>
 <main layout:fragment="content">
     <div class="container mt-5">
         <h2 class="text-center mb-4">Giỏ Hàng</h2>
+
         <table class="table table-bordered text-center align-middle">
             <thead class="table-light">
             <tr>
@@ -22,39 +21,45 @@
                 <th>Số lượng</th>
                 <th>Đơn giá</th>
                 <th>Tổng cộng</th>
+                <th>Hành động</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="item : ${cartItems}">
                 <td><img th:src="'/images/' + ${item.product.imageUrl}" class="img-thumbnail" style="width: 80px"></td>
                 <td th:text="${item.product.name}"></td>
-                <td th:text="${item.quantity}"></td>
-                <td th:text="${item.product.price}"></td>
-                <td th:text="${item.product.price * item.quantity}"></td>
+                <td>
+                    <form th:action="@{/cart/update}" method="post">
+                        <input type="hidden" name="productId" th:value="${item.product.id}">
+                        <input type="number" name="quantity" th:value="${item.quantity}" min="1">
+                        <button type="submit" class="btn btn-primary btn-sm">Cập nhật</button>
+                    </form>
+                </td>
+                <td th:text="${item.product.price} + ' VND'"></td>
+                <td th:text="${item.product.price * item.quantity} + ' VND'"></td>
+                <td>
+                    <a th:href="@{/cart/remove(productId=${item.product.id})}" class="btn btn-sm btn-danger">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                </td>
             </tr>
             </tbody>
             <tfoot>
             <tr>
                 <td colspan="4" class="text-end fw-bold">Tổng cộng</td>
-                <td class="fw-bold"> VND</td>
+                <td class="fw-bold" th:text="${cartTotal} + ' VND'"></td>
+                <td></td>
             </tr>
             </tfoot>
         </table>
 
         <div class="d-flex justify-content-between mt-4">
-            <button class="btn btn-secondary">Tiếp tục mua sắm</button>
-            <form th:action="@{/order/checkout}" method="post">
-                <button type="submit">Thanh toán</button>
-            </form>
-
+            <a th:href="@{/}" class="btn btn-secondary">Tiếp tục mua sắm</a>
+            <a th:href="@{/order/confirm}" class="btn btn-primary">Thanh toán</a>
         </div>
     </div>
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>
-
-
-

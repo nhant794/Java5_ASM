@@ -1,6 +1,7 @@
 package org.example.java5_asm.controller.admin;
 
 
+import org.example.java5_asm.dto.CategoryDTO;
 import org.example.java5_asm.model.Category;
 import org.example.java5_asm.model.Product;
 import org.example.java5_asm.service.CategoryService;
@@ -31,7 +32,8 @@ public class ProductAdminController {
 
     @GetMapping
     public String showProductForm(Model model) {
-        List<Category> categories = categoryService.getParentCategories(); // Đã có danh mục con trong danh mục cha
+        // Lấy danh sách danh mục cha (chỉ lấy active = true, đã bao gồm danh mục con)
+        List<CategoryDTO> categories = categoryService.getParentCategories();
 
         model.addAttribute("categories", categories);
         model.addAttribute("products", productService.getAllProducts());

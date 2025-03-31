@@ -79,13 +79,17 @@
               <span class="text-danger fw-bold" th:text="${#numbers.formatDecimal(p.discountedPrice, 0, 'COMMA', 0, 'POINT')}"></span>
               <span class="text-muted text-decoration-line-through" th:text="${#numbers.formatDecimal(p.price, 0, 'COMMA', 0, 'POINT')}"></span>
             </p>
+            <form th:action="@{/cart/update}" method="post" class="d-flex flex-column align-items-center gap-2">
+              <input type="hidden" name="productId" th:value="${p.id}" />
+              <input type="number" name="quantity" value="1" min="1" class="form-control form-control-sm" style="width: 60px;" />
+              <div class="d-flex align-items-center gap-2">
+                <button type="submit" class="btn btn-primary btn-sm">Thêm vào giỏ</button>
+                <button class="btn btn-danger btn-sm ">ĐẶT HÀNG</button>
+              </div>
+            </form>
+
           </div>
-          <form th:action="@{/cart/add}" method="post">
-            <input type="hidden" name="productId" th:value="${p.id}" />
-            <input type="number" name="quantity" value="1" min="1" />
-            <button type="submit">Thêm vào giỏ hàng</button>
-            <button class="btn btn-danger">ĐẶT HÀNG</button>
-          </form>
+
 
         </div>
       </div>

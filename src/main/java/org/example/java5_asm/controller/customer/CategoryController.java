@@ -1,6 +1,6 @@
 package org.example.java5_asm.controller.customer;
 
-import org.example.java5_asm.model.Category;
+import org.example.java5_asm.dto.CategoryDTO;
 import org.example.java5_asm.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +17,7 @@ public class CategoryController {
 
     @GetMapping("/categories")
     @ResponseBody
-    public List<Category> getCategories() {
+    public List<CategoryDTO> getCategories() {
         return categoryService.getParentCategories();
     }
 }

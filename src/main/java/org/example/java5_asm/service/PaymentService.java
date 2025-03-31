@@ -2,6 +2,7 @@ package org.example.java5_asm.service;
 
 import jakarta.transaction.Transactional;
 import org.example.java5_asm.model.Order;
+import org.example.java5_asm.model.OrderStatus;
 import org.example.java5_asm.model.Payment;
 import org.example.java5_asm.repository.OrderRepository;
 import org.example.java5_asm.repository.PaymentRepository;
@@ -29,7 +30,7 @@ public class PaymentService {
         paymentRepository.save(payment);
 
         // Cập nhật trạng thái đơn hàng
-        order.setStatus("PAID");
+        order.setStatus(OrderStatus.PENDING);
         orderRepository.save(order);
     }
 }
